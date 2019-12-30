@@ -9,7 +9,8 @@
 import UIKit
 import Firebase
 class SignUpAdminViewController: UIViewController {
-
+    var flag:Bool = false
+    var users:DatabaseReference!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -17,10 +18,10 @@ class SignUpAdminViewController: UIViewController {
     @IBOutlet weak var repeatPass: UITextField!
     @IBOutlet weak var toSmallError: UILabel!
     @IBOutlet weak var doNotMatchError: UILabel!
-
+    @IBOutlet weak var adminKey: UITextField!
     @IBOutlet weak var inUseError: UILabel!
     @IBOutlet weak var invalidEmailError: UILabel!
-    lazy var username = "\(firstName.text!)\(lastName.text!)"
+    lazy var username = email.text!
     lazy var passWord = password.text
     lazy var eMail = email.text
     
@@ -46,6 +47,9 @@ class SignUpAdminViewController: UIViewController {
     }
     */
     @IBAction func didRegister(_ sender: Any) {
+        if(adminKey.text! == "4525"){
+            flag = true
+        }
         passWord = password.text
         eMail = email.text!
         if(repeatPass.text! == passWord){
@@ -94,11 +98,19 @@ class SignUpAdminViewController: UIViewController {
 //        let isUser = users.child(username).child("type")
 //        isUser.setValue("user")
         
-        let infoDict = ["First name": firstName.text!, "Last name": lastName.text!, "type" : "admin"] as [String : Any]
-        let users = ref.child("users").child(username)
+        let infoDict = ["First name": firstName.text!, "Last name": lastName.text!, "type" : "admin", "flag":flag] as [String : Any]
+        let id = Auth.auth().currentUser?.uid
+        users = ref.child("users").child(id!)
         users.setValue(infoDict)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier  == "registerSuccess" {
+            let vc = segue.destination as! LoginViewController
+            vc.userKey = users.key!
+        }
+
+    }
 
 
 }

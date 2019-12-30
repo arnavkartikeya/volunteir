@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 class SignUpViewController: UIViewController {
     var infoDict:[String:Any] = [:]
+    var users:DatabaseReference!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var email: UITextField!
@@ -44,44 +45,48 @@ class SignUpViewController: UIViewController {
     }
     */
     @IBAction func didRegister(_ sender: Any) {
-        passWord = password.text
-        eMail = email.text!
-        if(repeatPass.text! == passWord){
-            Auth.auth().createUser(withEmail: eMail!, password: passWord!) {
-                (user, error) in
-                if(error != nil){
-                    
-                    if let errCode = AuthErrorCode(rawValue: error!._code) {
-
-                        switch errCode {
-                        case .invalidEmail:
-                            print("invalid email")
-                        self.invalidEmailError.isHidden = false
-                        case .emailAlreadyInUse:
-                            print("in use")
-                            self.inUseError.isHidden = false
-                        default:
-                            print("Other error!")
-                        }
-
-                    }
-                    
-                    if(self.passWord!.count < 6){
-                        self.toSmallError.isHidden = false
-                    }
-                }
-                else{
                     self.toSmallError.isHidden = true
                     self.doNotMatchError.isHidden = true
-                    print("Registration succesful!")
-                    self.pushUserInfo()
-                    self.performSegue(withIdentifier: "registerSuccess", sender: self)
-                }
-            }
-        }else{
-             doNotMatchError.isHidden = false
-        }
+                    self.inUseError.isHidden = true
+                    self.invalidEmailError.isHidden = true
+                    self.passWord = self.password.text
+                    self.eMail = self.email.text!
+                    if(self.repeatPass.text! == self.passWord){
+                        Auth.auth().createUser(withEmail: self.eMail!, password: self.passWord!) {
+                            (user, error) in
+                            if(error != nil){
+                                
+                                if let errCode = AuthErrorCode(rawValue: error!._code) {
+                                    switch errCode {
+                                    case .invalidEmail:
+                                        print("invalid email")
+                                    self.invalidEmailError.isHidden = false
+                                    case .emailAlreadyInUse:
+                                        print("in use")
+                                        self.inUseError.isHidden = false
+                                    default:
+                                        print("Other error!")
+                                    }
+
+                                }
+                                
+                                if(self.passWord!.count < 6){
+                                    self.toSmallError.isHidden = false
+                                }
+                            }
+                            else{
+                                self.toSmallError.isHidden = true
+                                self.doNotMatchError.isHidden = true
+                                print("Registration succesful!")
+                                self.pushUserInfo()
+                                self.performSegue(withIdentifier: "registerSuccess", sender: self)
+                            }
+                        }
+                    }else{
+                        self.doNotMatchError.isHidden = false
+                    }
     }
+        
     func pushUserInfo(){
         let ref = Database.database().reference()
 //        let users = ref.child("users")
@@ -95,7 +100,8 @@ class SignUpViewController: UIViewController {
 //        isUser.setValue("user")
         
         infoDict = ["First name": firstName.text!, "Last name": lastName.text!, "hours": 0, "type" : "user"] as [String : Any]
-        let users = ref.child("users").child(username)
+        let id = Auth.auth().currentUser?.uid
+        users = ref.child("users").child(id!)
         users.setValue(infoDict)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,6 +109,7 @@ class SignUpViewController: UIViewController {
             let vc = segue.destination as! SignUpContViewController
             vc.stringHolder = username
             vc.infoDict = infoDict
+            vc.userID = users.key!
         }
 
     }

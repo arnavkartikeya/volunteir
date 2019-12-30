@@ -12,12 +12,10 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var invalidError: UILabel!
+    var userKey:String = ""
     
-    lazy var username = "\(firstName.text!)\(lastName.text!)"
-    
+    @IBOutlet weak var adminPermission: UILabel!
     
     
     override func viewDidLoad() {
@@ -25,9 +23,12 @@ class LoginViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         invalidError.isHidden = true
+        adminPermission.isHidden = true
     }
     
     @IBAction func loginPressed(_ sender: Any) {
+        adminPermission.isHidden = true
+        invalidError.isHidden = true
         var success = true
         var type = "test"
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) {
@@ -38,10 +39,14 @@ class LoginViewController: UIViewController {
                     self.invalidError.isHidden = false
                 }
                 else{
+                    
+                    
                     print("success")
-                    let ref = Database.database().reference().child("users/\(self.username)")
+                    
+                    let id = Auth.auth().currentUser?.uid
+                    let ref = Database.database().reference().child("users/\(id!)")
+                    print(ref)
                      ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                     // Now you can access the type value
                      let value = snapshot.value as? NSDictionary
                         print(value)
                      type = (value!["type"])! as! String
@@ -49,11 +54,20 @@ class LoginViewController: UIViewController {
                         self.performSegue(withIdentifier: "goToUser", sender: self)
                         }
                         else{
-                        self.performSegue(withIdentifier: "goToAdmin", sender: self)
+                            let flag = value!["flag"] as! Bool
+                            if(flag){
+                                 self.performSegue(withIdentifier: "goToAdmin", sender: self)
+                            }else{
+                                self.adminPermission.isHidden = false
+                            }
                         }
-                      }) { (error) in
+                      })
+                       { (error) in
                         print(error.localizedDescription)
                     }
+                    
+                    
+                    
                 }
         }
     

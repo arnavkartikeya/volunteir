@@ -11,12 +11,12 @@ import Firebase
 class SignUpContViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var stringHolder:String = ""
     var infoDict:[String:Any] = [:]
+    var userID:String = ""
     @IBOutlet weak var location: UIPickerView!
     let cities = ["Cupertino", "Mountain view", "Santa Clara", "San Jose", "Fremont", "Saratoga"]
     let types = ["technology", "dancing", "arts and crafts"]
     var selection:String! 
     @IBOutlet weak var selectedLabel: UILabel!
-    @IBOutlet weak var typeOfEvent: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,18 +48,18 @@ class SignUpContViewController: UIViewController, UIPickerViewDelegate, UIPicker
     */
     @IBAction func didRegister(_ sender: Any) {
             let username = stringHolder
+            let id = Auth.auth().currentUser?.uid
             let ref = Database.database().reference()
-            let users = ref.child("users").child(username)
+            let users = ref.child("users").child(id!)
             infoDict["location"] = selection
-            infoDict["eventType"] = typeOfEvent.text!
             users.setValue(infoDict)
             print("registration successful")
+            print(userID)
             performSegue(withIdentifier: "signUpSuccess", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier  == "registerSuccess" {
             let vc = segue.destination as! LoginViewController
-            vc.username = stringHolder
         }
     }
 }
