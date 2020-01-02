@@ -39,7 +39,6 @@ class EventsTableViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "productstable", for: indexPath)
         cell.textLabel?.text = self.eventsArray[indexPath.row]
         return cell
@@ -48,25 +47,29 @@ class EventsTableViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ref = Database.database().reference()
         ref.child("Events").observe(.value) { (data) in
             let events = data.value as! [String:[String:Any]]
             for(_,value) in events{
-                self.eventsArray.append(value["EventName"]! as! String)
-                self.actualEvents.append(Events(evName: value["EventName"]! as! String, evDesc: value["EventDescription"]! as! String, evStartDate: value["start time"]! as! String, evEndDate: value["end time"] as! String, evNumPeople: value["NumberOfPeople"]! as! Int, evNumRegistered: value["currentPeople"] as! Int))
-                
+                if(self.eventsArray.contains(value["EventName"]! as! String) == false){
+                    self.eventsArray.append(value["EventName"]! as! String)
+                    self.actualEvents.append(Events(evName: value["EventName"]! as! String, evDesc: value["EventDescription"]! as! String, evStartDate: value["start time"]! as! String, evEndDate: value["end time"] as! String, evNumPeople: value["NumberOfPeople"]! as! Int, evNumRegistered: value["currentPeople"] as! Int))
+                }
             }
             self.tblEvents.reloadData()
         }
         self.tblEvents.dataSource = self
         self.tblEvents.delegate = self
         
+        
+        
         // Do any additional setup after loading the view.
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         //Access the array that you have used to fill the tableViewCell
-        print(eventsArray[indexPath.row])
+        print("tableView function: " + "\(eventsArray[indexPath.row])")
         eventName = eventsArray[indexPath.row]
     }
     

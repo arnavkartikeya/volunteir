@@ -65,6 +65,7 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - leveldb-library (1.20)
+  - MBCircularProgressBar (0.3.5)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -77,6 +78,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - MBCircularProgressBar
   - TextFieldEffects
 
 SPEC REPOS:
@@ -92,6 +94,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - MBCircularProgressBar
     - nanopb
     - TextFieldEffects
 
@@ -107,9 +110,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 84df567c76ca84f67b7bb40e769fdd4acc746a10
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 209bb28e0826e0c5b8bcfb150b6a201f9c9dd2d9
+PODFILE CHECKSUM: e0f83f281035324101ab472b17ed407a5bc40a45
 
 COCOAPODS: 1.5.3

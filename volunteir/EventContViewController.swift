@@ -68,7 +68,7 @@ class EventContViewController: UIViewController {
         infoDict["start time"] = inputTextField.text!
         infoDict["end time"] = inputEndTextFeild.text!
         infoDict["currentPeople"] = 0
-        infoDict["listOfPeople"] = []
+        infoDict["listOfPeople"] = [""]
         infoDict["admin"] = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("Events").child(eventName)
         ref.setValue(infoDict)

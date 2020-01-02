@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "971B8E0FC188C8A70DDE1CA113E33236"
-               BlueprintName = "TextFieldEffects"
+               BlueprintIdentifier = "EDF01DFEBC4074645C585421EDCDC2D5"
+               BlueprintName = "MBCircularProgressBar"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TextFieldEffects.framework">
+               BuildableName = "MBCircularProgressBar.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
