@@ -29,6 +29,8 @@ class UserProfileViewController: UIViewController {
             self.hoursProgress.value = hours as! CGFloat
             if(hrs >= Int(self.hoursProgress.maxValue)){
                 self.hoursProgress.maxValue = self.hoursProgress.maxValue + 25
+                print(true)
+                print(self.hoursProgress.maxValue)
             }
             UIView.animate(withDuration: 5.0){
                 self.hoursProgress.value = hours as! CGFloat

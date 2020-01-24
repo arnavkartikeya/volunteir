@@ -68,11 +68,15 @@ class EventsInfoViewController: UIViewController {
                                  var infoDict = ["EventDescription":((self.eventInfo!.eventDesc)!), "EventName":((self.eventInfo!.eventName)!), "NumberOfPeople":((self.eventInfo!.numPeople)!), "admin":admin, "start time": value!["start time"] as! String, "end time": value!["end time"] as! String, "currentPeople":value!["currentPeople"] as! Int + 1] as [String : Any]
                                  var username = Auth.auth().currentUser?.uid as! String
                                  event.child("\((self.eventInfo!.eventName)!)").setValue(infoDict)
-                               event.child("\((self.eventInfo!.eventName)!)").child("people").child("\(username)").setValue(username)
+                                   
+                            let ad = db.child("users").child(admin)
+                            ad.child("createdEvents").child("\(self.eventInfo!.eventName!)").child(username).setValue(username)
+                            
+                            
                                let user = db.child("users").child(username)
-                               user.child("registeredEvents").child(self.eventInfo!.eventName!).setValue("")
+                            user.child("registeredEvents").child(self.eventInfo!.eventName!).setValue(self.eventInfo!.eventName!)
                                 let userDB = Database.database().reference().child("users/\(username)")
-                            userDB.observeSingleEvent(of: .value) { (snapshot) in
+                                userDB.observeSingleEvent(of: .value) { (snapshot) in
                                 let value = snapshot.value as? NSDictionary
                                 let hours = (value!["hours"])! as! Int
                                 user.child("hours").setValue(hours+1)
@@ -85,7 +89,7 @@ class EventsInfoViewController: UIViewController {
                   }
 
         })
-       
+        
     }
     
     

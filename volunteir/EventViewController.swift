@@ -42,7 +42,7 @@ class EventViewController: UIViewController {
         let ref = Database.database().reference()
         let eventChild = ref.child("Events")
         infoDict = ["EventName" : eventName.text!, "NumberOfPeople" : currentValue, "EventDescription": desc] as [String : Any]
-    eventChild.child(eventName.text!).setValue(infoDict)
+        eventChild.child(eventName.text!).setValue(infoDict)
         performSegue(withIdentifier: "eventContinue", sender: self)
     }
     func convertDateFormatter() -> String {

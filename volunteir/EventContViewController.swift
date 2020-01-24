@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+
 class EventContViewController: UIViewController {
     var eventName:String = ""
     var infoDict:[String:Any] = [:]
@@ -68,10 +69,12 @@ class EventContViewController: UIViewController {
         infoDict["start time"] = inputTextField.text!
         infoDict["end time"] = inputEndTextFeild.text!
         infoDict["currentPeople"] = 0
-        infoDict["listOfPeople"] = [""]
         infoDict["admin"] = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("Events").child(eventName)
         ref.setValue(infoDict)
+        let id = Auth.auth().currentUser?.uid
+        let db = Database.database().reference().child("users/\(id!)")
+        db.child("createdEvents").child(eventName).setValue("\(eventName)")
         isCreated.isHidden = false
         performSegue(withIdentifier: "goToAdminAgain", sender: self)
     }
