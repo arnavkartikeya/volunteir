@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     var infoDict:[String:Any] = [:]
     var users:DatabaseReference!
     @IBOutlet weak var firstName: UITextField!
@@ -32,6 +32,8 @@ class SignUpViewController: UIViewController {
         doNotMatchError.isHidden = true
         inUseError.isHidden = true
         invalidEmailError.isHidden = true
+        
+        repeatPass.delegate = self
     }
     
 
@@ -112,5 +114,9 @@ class SignUpViewController: UIViewController {
             vc.userID = users.key!
         }
 
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
