@@ -75,10 +75,9 @@ class AdminsEventsViewController: UIViewController, UITableViewDelegate, UITable
       }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if let destination = segue.destination as? RegisteredUsersViewController {
-               destination.events = actualEvents[(tblEvents.indexPathForSelectedRow?.row)!]
-               tblEvents.deselectRow(at: tblEvents.indexPathForSelectedRow!, animated: true)
-
+        if let destination = segue.destination as? RegisteredUsersViewController, let cell = sender as? UITableViewCell, let indexPath = tblEvents.indexPath(for:cell) {
+               destination.events = actualEvents[indexPath.row]
+               tblEvents.deselectRow(at: indexPath, animated: true)
            }
     }
 

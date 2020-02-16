@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		24FBCB2894E0FD5E83ADE8DA /* Pods_volunteirUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D36BA8F27865F7ED4AF40D /* Pods_volunteirUITests.framework */; };
+		6204E8D623E209B70061972C /* MakeAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204E8D523E209B70061972C /* MakeAdminViewController.swift */; };
 		62163D0223B712A1002D08CF /* EventContViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62163D0123B712A1002D08CF /* EventContViewController.swift */; };
 		62163D0623B96C28002D08CF /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62163D0523B96C28002D08CF /* EventsTableViewController.swift */; };
 		62163D0823B97785002D08CF /* EventsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62163D0723B97785002D08CF /* EventsInfoViewController.swift */; };
@@ -17,6 +18,7 @@
 		623C5D3623B1976D003CA5E1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623C5D3523B1976D003CA5E1 /* LoginViewController.swift */; };
 		6253AE5223B5B959005DC93D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6253AE5123B5B959005DC93D /* EventViewController.swift */; };
 		6259FAEA23CF95FF00FF0081 /* RegisteredUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6259FAE923CF95FF00FF0081 /* RegisteredUsersViewController.swift */; };
+		6262AEEC23F2829C0097B54D /* UpdateEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6262AEEB23F2829C0097B54D /* UpdateEventsViewController.swift */; };
 		62791A7423B077A7006F4139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62791A7323B077A7006F4139 /* AppDelegate.swift */; };
 		62791A7623B077A7006F4139 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62791A7523B077A7006F4139 /* SceneDelegate.swift */; };
 		62791A7823B077A8006F4139 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62791A7723B077A8006F4139 /* ViewController.swift */; };
@@ -56,6 +58,7 @@
 		17A2FF88EBF122D7C153490E /* Pods-volunteirTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volunteirTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-volunteirTests/Pods-volunteirTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CAD6ABCCD5637BEDD2D6B54 /* Pods-volunteir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volunteir.debug.xcconfig"; path = "Pods/Target Support Files/Pods-volunteir/Pods-volunteir.debug.xcconfig"; sourceTree = "<group>"; };
 		4E513D728FD668633AAA9EA4 /* Pods-volunteirUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-volunteirUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-volunteirUITests/Pods-volunteirUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6204E8D523E209B70061972C /* MakeAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAdminViewController.swift; sourceTree = "<group>"; };
 		62163D0123B712A1002D08CF /* EventContViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventContViewController.swift; sourceTree = "<group>"; };
 		62163D0523B96C28002D08CF /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		62163D0723B97785002D08CF /* EventsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsInfoViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 		623C5D3523B1976D003CA5E1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6253AE5123B5B959005DC93D /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		6259FAE923CF95FF00FF0081 /* RegisteredUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredUsersViewController.swift; sourceTree = "<group>"; };
+		6262AEEB23F2829C0097B54D /* UpdateEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEventsViewController.swift; sourceTree = "<group>"; };
 		62791A7023B077A7006F4139 /* volunteir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = volunteir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62791A7323B077A7006F4139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62791A7523B077A7006F4139 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		62791A6723B077A7006F4139 = {
 			isa = PBXGroup;
 			children = (
+				6204E8D523E209B70061972C /* MakeAdminViewController.swift */,
 				62791A7223B077A7006F4139 /* volunteir */,
 				62791A8923B077AA006F4139 /* volunteirTests */,
 				62791A9423B077AA006F4139 /* volunteirUITests */,
@@ -168,6 +173,7 @@
 				62EB4A5823C26C8E00950159 /* AdminsEventsViewController.swift */,
 				6259FAE923CF95FF00FF0081 /* RegisteredUsersViewController.swift */,
 				62AEC87B23DF5F8F007E7B81 /* PendingAdminsViewController.swift */,
+				6262AEEB23F2829C0097B54D /* UpdateEventsViewController.swift */,
 			);
 			path = volunteir;
 			sourceTree = "<group>";
@@ -452,7 +458,9 @@
 			files = (
 				623C5D3623B1976D003CA5E1 /* LoginViewController.swift in Sources */,
 				62EB4A5123BC22CA00950159 /* UserProfileViewController.swift in Sources */,
+				6204E8D623E209B70061972C /* MakeAdminViewController.swift in Sources */,
 				62791A7823B077A8006F4139 /* ViewController.swift in Sources */,
+				6262AEEC23F2829C0097B54D /* UpdateEventsViewController.swift in Sources */,
 				62EB4A5923C26C8E00950159 /* AdminsEventsViewController.swift in Sources */,
 				62791A7423B077A7006F4139 /* AppDelegate.swift in Sources */,
 				6259FAEA23CF95FF00FF0081 /* RegisteredUsersViewController.swift in Sources */,

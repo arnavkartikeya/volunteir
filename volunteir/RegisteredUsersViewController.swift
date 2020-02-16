@@ -10,6 +10,9 @@ import UIKit
 import Firebase
 class RegisteredUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
+
+
+
     var events:AdminEvents?
     var registeredUsers = [String]()
     var actualUsers = [String]()
@@ -55,9 +58,14 @@ class RegisteredUsersViewController: UIViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
         self.tblView.dataSource = self
         self.tblView.delegate = self
+ 
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if let destination = segue.destination as? UpdateEventsViewController {
+            destination.eventName = events!.eventName! 
+           }
+    }
     /*
     // MARK: - Navigation
 

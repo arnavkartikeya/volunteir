@@ -8,9 +8,17 @@
 
 import UIKit
 import Firebase
+class MakeAdmin{
+    var eventName:String?
+    
+    init(evName:String){
+        self.eventName = evName
+    }
+}
 class PendingAdminsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var pendingAdmins = [String]()
+    var admins:[MakeAdmin] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pendingAdmins.count
     }
@@ -28,6 +36,7 @@ class PendingAdminsViewController: UIViewController, UITableViewDelegate, UITabl
         let ref = Database.database().reference()
         let user = ref.child("users")
         user.observe(.value) { (snapshot) in
+            self.pendingAdmins.removeAll();
               let enumerator = snapshot.children
               while let rest = enumerator.nextObject() as? DataSnapshot {
                   let r = rest.value as? NSDictionary
@@ -35,6 +44,7 @@ class PendingAdminsViewController: UIViewController, UITableViewDelegate, UITabl
                     if("\(r!["flag"]!)" == "0"){
                       let username = "\(r!["First name"]!)" + " \(r!["Last name"]!)"
                       self.pendingAdmins.append(username)
+                        self.admins.append(MakeAdmin(evName: rest.key))
                       print(self.pendingAdmins)
                     }
               }
@@ -47,6 +57,13 @@ class PendingAdminsViewController: UIViewController, UITableViewDelegate, UITabl
         self.tblView.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MakeAdminViewController {
+            destination.name = admins[(tblView.indexPathForSelectedRow?.row)!]
+            tblView.deselectRow(at: tblView.indexPathForSelectedRow!, animated: true)
+
+        }
+    }
 
     /*
     // MARK: - Navigation

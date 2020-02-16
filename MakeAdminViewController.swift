@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class MakeAdminViewController: UIViewController {
-
+    var name:MakeAdmin?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +18,16 @@ class MakeAdminViewController: UIViewController {
     }
     
 
+    
+    
+    @IBAction func makeAdmin(_ sender: Any) {
+        let ref = Database.database().reference()
+        print(name?.eventName!)
+        let user = ref.child("users").child((name?.eventName!)!)
+        user.child("flag").setValue(true);
+        
+    }
+    
     /*
     // MARK: - Navigation
 

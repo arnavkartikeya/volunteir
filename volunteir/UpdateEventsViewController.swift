@@ -7,16 +7,41 @@
 //
 
 import UIKit
-
+import Firebase
 class UpdateEventsViewController: UIViewController {
-
+    var eventName:String = ""
+    var currentValue:Int = 0
+    
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var eventDescription: UITextView!
+    
+    lazy var desc = eventDescription.text!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
 
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+         currentValue = Int(sender.value)
+            
+        label.text = "Number of people: "+"\(currentValue)"
+    }
+    
+    
+    
+    @IBAction func didUpdate(_ sender: Any) {
+        let ref = Database.database().reference()
+        
+        let eventChild = ref.child("Events")
+        eventChild.child(eventName).child("NumberOfPeople").setValue(currentValue)
+        eventChild.child(eventName).child("EventDescription").setValue(desc)
+
+    }
+    
     /*
     // MARK: - Navigation
 
