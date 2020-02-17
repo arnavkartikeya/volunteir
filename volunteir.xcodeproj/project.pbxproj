@@ -28,6 +28,7 @@
 		62791A8B23B077AA006F4139 /* volunteirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62791A8A23B077AA006F4139 /* volunteirTests.swift */; };
 		62791A9623B077AA006F4139 /* volunteirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62791A9523B077AA006F4139 /* volunteirUITests.swift */; };
 		62791AA423B085C9006F4139 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 62791AA323B085C9006F4139 /* GoogleService-Info.plist */; };
+		628119CD23FA426200A08F7F /* DateUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628119CC23FA426200A08F7F /* DateUpdateViewController.swift */; };
 		62AEC87C23DF5F8F007E7B81 /* PendingAdminsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEC87B23DF5F8F007E7B81 /* PendingAdminsViewController.swift */; };
 		62EB4A5123BC22CA00950159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB4A5023BC22CA00950159 /* UserProfileViewController.swift */; };
 		62EB4A5523BE77E300950159 /* PersonalEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB4A5423BE77E300950159 /* PersonalEventsViewController.swift */; };
@@ -84,6 +85,7 @@
 		62791A9523B077AA006F4139 /* volunteirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = volunteirUITests.swift; sourceTree = "<group>"; };
 		62791A9723B077AA006F4139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62791AA323B085C9006F4139 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		628119CC23FA426200A08F7F /* DateUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUpdateViewController.swift; sourceTree = "<group>"; };
 		62AEC87B23DF5F8F007E7B81 /* PendingAdminsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingAdminsViewController.swift; sourceTree = "<group>"; };
 		62EB4A5023BC22CA00950159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		62EB4A5423BE77E300950159 /* PersonalEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalEventsViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				6259FAE923CF95FF00FF0081 /* RegisteredUsersViewController.swift */,
 				62AEC87B23DF5F8F007E7B81 /* PendingAdminsViewController.swift */,
 				6262AEEB23F2829C0097B54D /* UpdateEventsViewController.swift */,
+				628119CC23FA426200A08F7F /* DateUpdateViewController.swift */,
 			);
 			path = volunteir;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				623C5D3223B18838003CA5E1 /* SignUpViewController.swift in Sources */,
 				62EB4A5723C1277400950159 /* PersonalEventsInfoViewController.swift in Sources */,
 				62AEC87C23DF5F8F007E7B81 /* PendingAdminsViewController.swift in Sources */,
+				628119CD23FA426200A08F7F /* DateUpdateViewController.swift in Sources */,
 				62163D0223B712A1002D08CF /* EventContViewController.swift in Sources */,
 				6253AE5223B5B959005DC93D /* EventViewController.swift in Sources */,
 				623C5D3423B192DA003CA5E1 /* SignUpAdminViewController.swift in Sources */,

@@ -12,7 +12,6 @@ class UpdateEventsViewController: UIViewController {
     var eventName:String = ""
     var currentValue:Int = 0
     
-    @IBOutlet weak var name: UITextField!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var eventDescription: UITextView!
     
@@ -37,10 +36,19 @@ class UpdateEventsViewController: UIViewController {
         let ref = Database.database().reference()
         
         let eventChild = ref.child("Events")
-        eventChild.child(eventName).child("NumberOfPeople").setValue(currentValue)
-        eventChild.child(eventName).child("EventDescription").setValue(desc)
+
+    eventChild.child(eventName).child("NumberOfPeople").setValue(currentValue)
+    eventChild.child(eventName).child("EventDescription").setValue(desc)
+        
 
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+              if let destination = segue.destination as? DateUpdateViewController {
+               destination.eventName = eventName
+              }
+       }
+    
+    
     
     /*
     // MARK: - Navigation
