@@ -19,6 +19,7 @@ class UserProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
+        print("activated")
         let id = Auth.auth().currentUser?.uid
         let ref = Database.database().reference().child("users/\(id!)")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
