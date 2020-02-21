@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -24,8 +24,13 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         invalidError.isHidden = true
         adminPermission.isHidden = true
+        self.email.delegate = self
+        self.password.delegate = self
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     @IBAction func loginPressed(_ sender: Any) {
         adminPermission.isHidden = true
         invalidError.isHidden = true
@@ -48,7 +53,6 @@ class LoginViewController: UIViewController {
                     print(ref)
                      ref.observeSingleEvent(of: .value, with: { (snapshot) in
                      let value = snapshot.value as? NSDictionary
-                        print(value)
                      type = (value!["type"])! as! String
                     if(type == "user"){
                         self.performSegue(withIdentifier: "goToUser", sender: self)

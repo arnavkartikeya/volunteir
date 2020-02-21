@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class EventViewController: UIViewController {
+class EventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate{
     var currentValue:Int = 0
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var eventName: UITextField!
@@ -20,6 +20,8 @@ class EventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.eventName.delegate = self
+        self.eventDesc.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -37,7 +39,17 @@ class EventViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     @IBAction func eventCreated(_ sender: Any) {
         let ref = Database.database().reference()
         let eventChild = ref.child("Events")

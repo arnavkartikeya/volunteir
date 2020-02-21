@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-class UpdateEventsViewController: UIViewController {
+class UpdateEventsViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     var eventName:String = ""
     var currentValue:Int = 0
     
@@ -20,7 +20,19 @@ class UpdateEventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.eventDescription.delegate = self
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           self.view.endEditing(true)
+           return false
+       }
+       func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+           if(text == "\n") {
+               textView.resignFirstResponder()
+               return false
+           }
+           return true
+       }
     
 
     

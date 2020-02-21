@@ -34,9 +34,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         invalidEmailError.isHidden = true
         
         repeatPass.delegate = self
+        
+        self.firstName.delegate = self
+        self.lastName.delegate = self
+        self.email.delegate = self
+        self.password.delegate = self
     }
     
-
+   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -88,7 +97,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         self.doNotMatchError.isHidden = false
                     }
     }
-        
+    
     func pushUserInfo(){
         let ref = Database.database().reference()
 //        let users = ref.child("users")
@@ -114,9 +123,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             vc.userID = users.key!
         }
 
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
