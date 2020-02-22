@@ -16,9 +16,6 @@ class AdminViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func pendingAdmin(_ sender: Any) {
-
-    }
     
     /*
     // MARK: - Navigation

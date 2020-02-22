@@ -47,12 +47,11 @@ class SignUpAdminViewController: UIViewController {
     }
     */
     @IBAction func didRegister(_ sender: Any) {
-        if(adminKey.text! == "4525"){
-            flag = true
-        }
         passWord = password.text
         eMail = email.text!
-        if(repeatPass.text! == passWord){
+        if(adminKey.text! == "4525"){
+            flag = true
+            if(repeatPass.text! == passWord){
             Auth.auth().createUser(withEmail: eMail!, password: passWord!) {
                 (user, error) in
                 if(error != nil){
@@ -81,10 +80,42 @@ class SignUpAdminViewController: UIViewController {
                     self.pushUserInfo()
                     self.performSegue(withIdentifier: "registrationSuccess", sender: self)
                 }
+                }
             }
         }else{
-             doNotMatchError.isHidden = false
+            flag = false
+            if(repeatPass.text! == passWord){
+            Auth.auth().createUser(withEmail: eMail!, password: passWord!) {
+                (user, error) in
+                if(error != nil){
+                       if let errCode = AuthErrorCode(rawValue: error!._code) {
+                       switch errCode {
+                       case .invalidEmail:
+                           print("invalid email")
+                       self.invalidEmailError.isHidden = false
+                       case .emailAlreadyInUse:
+                           print("in use")
+                           self.inUseError.isHidden = false
+                       default:
+                           print("Other error!")
+                       }
+
+                   }
+                    if(self.passWord!.count < 6){
+                        self.toSmallError.isHidden = false
+                    }
+                    
+                }
+                else{
+                    self.toSmallError.isHidden = true
+                    self.doNotMatchError.isHidden = true
+                    print("Registration succesful!")
+                    self.pushUserInfo()
+                    self.performSegue(withIdentifier: "goToPendingPage", sender: self)
+                }
+            }
         }
+    }
     }
     func pushUserInfo(){
           let ref = Database.database().reference()
@@ -111,6 +142,5 @@ class SignUpAdminViewController: UIViewController {
         }
 
     }
-
 
 }
