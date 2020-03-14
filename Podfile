@@ -7,11 +7,12 @@ target 'volunteir' do
 
   # Pods for volunteir
 pod 'Firebase'
-pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
-pod 'TextFieldEffects'
 pod 'MBCircularProgressBar'
+pod 'TextFieldEffects'
+
+#Downloading dependencies
   target 'volunteirTests' do
     inherit! :search_paths
     # Pods for testing
